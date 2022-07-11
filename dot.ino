@@ -53,7 +53,7 @@ void loop()
   // 도트매트릭스의 LED를 첫 행부터 차례대로 켭니다.
   for (int row = 0; row < 8; row++)
   {
-    lc.setRow(0, row, F[row]);  // 도트매트릭스의 LED를 행단위로 위부터 켭니다.
+    lc.setRow(0, row, W[row]);  // 도트매트릭스의 LED를 행단위로 위부터 켭니다.
     delay(25);
   }
 }
