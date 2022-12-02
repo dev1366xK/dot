@@ -1,6 +1,6 @@
 #include "LedControl.h"
  
-// 오렌지보드의 12, 11, 10핀을 사용하고, 1개의 8x8 도트매트릭스를 제어하는 도트매트릭스 객체를 생성합니다.
+// use 12, 11, 10pin, control 1 8x8 dot
 LedControl lc = LedControl(12, 11, 10, 1);
  
 byte A[8] = { B00011000, B00100100, B00100100, B01000010, B01111110, B01000010, B01000010, B01000010};
@@ -31,29 +31,24 @@ byte Y[8] = { 0x81, 0x42, 0x24, 0x18, 0x18, 0x18, 0x18, 0x18 };
 byte H[8] = { 0x7e, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x7e };
 
 
-// 실행시 가장 먼저 호출되는 함수이며, 최초 1회만 실행됩니다.
-// 변수를 선언하거나 초기화를 위한 코드를 포함합니다.
 void setup()
 {
-  // 도트매트릭스의 절전모드를 꺼줍니다.
+  // on
   lc.shutdown(0, false);
  
-  // 도트매트릭스의 LED 밝기를 8로 지정해 줍니다.(0~15)
+  // brightness
   lc.setIntensity(0, 2);
  
-  // 도트매트릭스의 LED를 초기화 해줍니다.
+  // LED init
   lc.clearDisplay(0);
 }
  
- 
-// setup() 함수가 호출된 이후, loop() 함수가 호출되며,
-// 블록 안의 코드를 무한히 반복 실행됩니다.
 void loop()
 {
-  // 도트매트릭스의 LED를 첫 행부터 차례대로 켭니다.
+  // on
   for (int row = 0; row < 8; row++)
   {
-    lc.setRow(0, row, W[row]);  // 도트매트릭스의 LED를 행단위로 위부터 켭니다.
+    lc.setRow(0, row, W[row]);
     delay(25);
   }
 }
